@@ -28,13 +28,13 @@ public class ProdutoLogica implements Logica {
                 //UpFiles up = new UpFiles();
                 //up.setPath("../../web/img/produto/");
                 //if (up.send(req)) {
-                produto.setFoto1(req.getPart("foto1").getSubmittedFileName());
+                produto.setFoto1(req.getPart("foto1").getSubmittedFileName());    //request gguarda os dados
                 produto.setFoto2(req.getPart("foto2").getSubmittedFileName());
                 produto.setFoto3(req.getPart("foto3").getSubmittedFileName());
 
                 produto.setDescricao(req.getParameter("descricao").trim());
 
-                if (!req.getParameter("quant").equals("")) {
+                if (!req.getParameter("quant").equals("")) { //
                     produto.setQuant(Integer.parseInt(req.getParameter("quant")));
                 }
                 if (!req.getParameter("valor").equals("")) {
@@ -48,7 +48,7 @@ public class ProdutoLogica implements Logica {
                     produto.setAtivo(false);
                 }
 
-                produto.isProduto();
+                produto.isProduto(); // 
 
                 CtrlProduto ctrProduto = new CtrlProduto();
                 ctrProduto.salvar(produto);
@@ -58,7 +58,7 @@ public class ProdutoLogica implements Logica {
 
             } catch (Exception e) {
                 req.setAttribute("erros", e.getMessage().replace(".\n", ".<br>"));
-                req.setAttribute("produto", produto);
+                req.setAttribute("produto", produto);   
             }
             pagina = "index.jsp?p=cadProduto";
         }//</editor-fold>
